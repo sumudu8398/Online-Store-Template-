@@ -1,0 +1,42 @@
+<div id="container">
+  <div id="header">
+    <h1>ApexTickets</h1>
+    <h2>Buy tickets at your convenience</h2>
+    <h3><?php echo "London, ".date('d F Y H:i:s');?></h3>
+  </div>
+  <div id="navigation">
+    <ul>
+      <li><a href="index.php">ApexTickets</a></li>
+	<?php 
+		if(isset($_SESSION['userId'])){
+			if($_SESSION['userType'] == "C") {
+				echo "<li><a href=aboutus.php>About Us</a></li>";
+				echo "<li><a href=rating.php>Rate Product</a></li>";
+				echo "<li><a href=wishlist.php>WishList</a></li>";
+				echo "<li><a href=message.php>Messaging</a></li>";
+				echo "<li><a href=search.php>Search</a></li>";
+				echo "<li><a href=editprofile.php>Edit Profile</a></li>";
+				echo "<li><a href=logout.php>Logout</a></li>";
+				
+						
+				echo "<li style='float: right'><a href=basket.php>Smart Basket</a></li>";
+					
+			} else if ($_SESSION['userType'] == "A") {
+				
+				echo "<li><a href=addproduct.php>Add Product</a></li>";
+				echo "<li><a href=editproduct.php>Edit Product</a></li>";
+				echo "<li><a href=processorders.php>Process Orders</a></li>";
+				echo "<li style='float: right'><a href=logout.php>Staff Logout</a></li>";
+						
+			}
+		} else {
+			echo "<li><a href=aboutus.php>About Us</a></li>";
+			echo "<li><a href=user_signup.php>Sign Up</a></li>";
+			echo "<li><a href=login.php>Login</a></li>";
+			echo "<li style='float: right'><a href=basket.php>Smart Basket</a></li>";
+			echo "<li style='float: right'><a href=login.php>Staff Login</a></li>";
+		}		
+	?>
+    </ul>
+  </div>
+  <div id="content">
